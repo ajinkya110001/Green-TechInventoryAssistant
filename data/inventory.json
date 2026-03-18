@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Coffee Beans",
+    "quantity": 1000,
+    "daily_usage": 100
+  },
+  {
+    "name": "Paper Cups",
+    "quantity": 200,
+    "daily_usage": 25
+  }
+]
