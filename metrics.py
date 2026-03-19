@@ -1,4 +1,3 @@
-# metrics.py
 
 def avg_usage(history):
     return sum(history) / len(history) if history else 0

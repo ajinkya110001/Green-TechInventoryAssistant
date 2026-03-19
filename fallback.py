@@ -1,4 +1,4 @@
-# fallback.py
+
 from metrics import waste_quantity
 
 def avg_usage(history):
