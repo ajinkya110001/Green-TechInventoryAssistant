@@ -1,8 +1,10 @@
 import os
-from openai import OpenAI
+from dotenv import load_dotenv
+from google import genai
 from fallback import suggest_sustainable
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+load_dotenv()
+client=genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def suggest_ai(item_name):
     if os.getenv("USE_AI") != "true":
@@ -13,12 +15,12 @@ def suggest_ai(item_name):
     Keep it practical and short.
     """
 
-    res = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
+    res = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt
+	)
 
-    return res.choices[0].message.content
+    return res.text
 
 
 def suggest_fallback(item_name):

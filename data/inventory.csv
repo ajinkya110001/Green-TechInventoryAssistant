@@ -1,4 +1,8 @@
-name,quantity,daily_usage,expiry_days
-Coffee Beans,1000,100,8
-Paper Cups,200,25,30
-Plastic Bottles,150,10,20
+name,quantity,usage_history,expiry_days
+Coffee Beans,1000,"120,110,100,90,95",8
+Milk Packets,200,"40,45,50,42,38",3
+Paper Cups,300,"20,22,18,19,21",30
+Plastic Bottles,150,"5,6,4,5,5",20
+Sandwich Bread,80,"15,12,10,9,8",4
+Cleaning Spray,50,"2,1.5,2,1.8,2",60
+Packaged Snacks,500,"25,20,18,15,12",25

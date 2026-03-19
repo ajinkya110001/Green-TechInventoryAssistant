@@ -1,14 +1,17 @@
 import os
-from openai import OpenAI
+from google import genai
+from dotenv import load_dotenv
 from fallback import predict_days_left, expiry_check
 
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+load_dotenv()
+
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def predict_ai(item):
-    if os.getenv("USE_AI") != "true":
-        raise Exception("AI unavailable")
+	if os.getenv("USE_AI") != "true":
+		raise Exception("AI unavailable")
 
-    prompt = f"""
+	prompt = f"""
     Item: {item['name']}
     Quantity: {item['quantity']}
     Daily usage: {item['daily_usage']}
@@ -17,15 +20,18 @@ def predict_ai(item):
     Predict:
     1. Days until depletion
     2. Whether it will expire before use
-    Keep answer short.
+    Keep answer short, the reader should know the context of the answer you are giving.
     """
+	try:
+		res = client.models.generate_content(
+		model="gemini-2.5-flash",
+		contents=prompt
+		)
+		print("AI Prediction successful")
+	except Exception as e:
+		print("AI Prediction Error:", e)
 
-    res = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}]
-    )
-
-    return res.choices[0].message.content
+	return res.text
 
 
 def predict_fallback(item):

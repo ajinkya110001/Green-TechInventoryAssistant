@@ -2,11 +2,43 @@
   {
     "name": "Coffee Beans",
     "quantity": 1000,
-    "daily_usage": 100
+    "usage_history": [120, 110, 100, 90, 95],
+    "expiry_days": 8
+  },
+  {
+    "name": "Milk Packets",
+    "quantity": 200,
+    "usage_history": [40, 45, 50, 42, 38],
+    "expiry_days": 3
   },
   {
     "name": "Paper Cups",
-    "quantity": 200,
-    "daily_usage": 25
+    "quantity": 300,
+    "usage_history": [20, 22, 18, 19, 21],
+    "expiry_days": 30
+  },
+  {
+    "name": "Plastic Bottles",
+    "quantity": 150,
+    "usage_history": [5, 6, 4, 5, 5],
+    "expiry_days": 20
+  },
+  {
+    "name": "Sandwich Bread",
+    "quantity": 80,
+    "usage_history": [15, 12, 10, 9, 8],
+    "expiry_days": 4
+  },
+  {
+    "name": "Cleaning Spray",
+    "quantity": 50,
+    "usage_history": [2, 1.5, 2, 1.8, 2],
+    "expiry_days": 60
+  },
+  {
+    "name": "Packaged Snacks",
+    "quantity": 500,
+    "usage_history": [25, 20, 18, 15, 12],
+    "expiry_days": 25
   }
 ]

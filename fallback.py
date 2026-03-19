@@ -1,9 +1,14 @@
 # fallback.py
+def avg_usage(history):
+    return sum(history) / len(history) if history else 0
 
 def predict_days_left(item):
-    if item["daily_usage"] == 0:
+    usage = avg_usage(item.get("usage_history", []))
+
+    if usage == 0:
         return None
-    return item["quantity"] / item["daily_usage"]
+
+    return item["quantity"] / usage
 
 
 def expiry_check(item):
