@@ -1,10 +1,15 @@
+from data_loader import load_json, load_csv, save_csv, save_json
+
 def add_item(inventory):
     name = input("Item name: ")
-    quantity = float(input("Quantity: "))
+    quantity = int(input("Quantity: "))
+    while quantity < 0:
+        print("\nQuantity cannot be negative!")
+        quantity = int(input("Quantity: "))
     expiry = float(input("Expiry days: "))
 
     history = input("Enter usage history (comma separated): ")
-    usage_history = [float(x.strip()) for x in history.split(",") if x.strip()]
+    usage_history = [int(x.strip()) for x in history.split(",") if x.strip()]
 
     item = {
         "name": name,
@@ -15,6 +20,9 @@ def add_item(inventory):
 
     inventory.append(item)
     print("Item added successfully!")
+    save_csv(inventory)
+    save_json(inventory)
+    print("\nChanges saved!\n")
     
 def modify_item(inventory):
     for i, item in enumerate(inventory):
@@ -30,7 +38,7 @@ def modify_item(inventory):
     new_history = input(f"Usage history ({item.get('usage_history', [])}): ")
 
     if new_qty:
-        item["quantity"] = float(new_qty)
+        item["quantity"] = int(new_qty)
 
     if new_expiry:
         item["expiry_days"] = float(new_expiry)
@@ -41,7 +49,10 @@ def modify_item(inventory):
         ]
 
     print("Item updated!")
-    
+    save_csv(inventory)
+    save_json(inventory)
+    print("\nChanges saved!\n")
+
 def add_usage_entry(inventory):
     for i, item in enumerate(inventory):
         print(f"{i+1}. {item['name']}")
@@ -49,8 +60,15 @@ def add_usage_entry(inventory):
     idx = int(input("Select item: ")) - 1
     item = inventory[idx]
 
-    usage = float(input("Enter today's usage: "))
+    usage = int(input("Enter today's usage: "))
+    while usage < 0:
+        print("\nUsage cannot be negative!")
+        usage = int(input("Enter today's usage: "))
+	    
 
     item.setdefault("usage_history", []).append(usage)
 
     print("Usage updated!")
+    save_csv(inventory)
+    save_json(inventory)
+    print("\nChanges saved!\n")

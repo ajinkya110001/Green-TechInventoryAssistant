@@ -13,14 +13,14 @@ def load_csv(path):
         reader = csv.DictReader(f)
         for row in reader:
             usage_history = [
-                float(x.strip()) for x in row["usage_history"].split(",") if x.strip()
+                int(x.strip()) for x in row["usage_history"].split(",") if x.strip()
             ]
 
             data.append({
                 "name": row["name"],
-                "quantity": float(row["quantity"]),
+                "quantity": int(row["quantity"]),
                 "usage_history": usage_history,
-                "expiry_days": float(row["expiry_days"])
+                "expiry_days": int(row["expiry_days"])
             })
 
     return data
@@ -29,7 +29,7 @@ def save_csv(inventory):
     with open("data/inventory.csv", "w", newline="") as f:
         writer = csv.DictWriter(
             f,
-            fieldnames=["name", "quantity", "daily_usage", "expiry_days"]
+            fieldnames=["name", "quantity", "usage_history", "expiry_days"]
         )
         writer.writeheader()
 
@@ -37,7 +37,7 @@ def save_csv(inventory):
             writer.writerow({
                 "name": item["name"],
                 "quantity": item["quantity"],
-                "daily_usage": item["daily_usage"],
+                "usage_history": ", ".join(str(x) for x in item["usage_history"]),
                 "expiry_days": item.get("expiry_days", "")
             })
 

@@ -59,3 +59,32 @@ def explain_waste(item):
 
 def total_waste(inventory):
     return sum(waste_quantity(item) for item in inventory)
+
+def optimal_quantity(item):
+    """Calculate the ideal quantity to have in inventory"""
+    usage = avg_usage(item.get("usage_history", []))
+    expiry = item.get("expiry_days")
+
+    if usage == 0 or not expiry:
+        return 0
+
+    return usage * expiry
+
+def restock_suggestion(item):
+    """Calculate how much to restock to meet daily demand until expiry"""
+    optimal = optimal_quantity(item)
+    current = item["quantity"]
+
+    if current >= optimal:
+        return 0
+
+    return round(optimal - current, 2)
+
+def days_until_runout(item):
+    """Calculate days before item runs out based on current usage"""
+    usage = avg_usage(item.get("usage_history", []))
+
+    if usage == 0:
+        return None
+
+    return round(item["quantity"] / usage, 1)
