@@ -34,6 +34,9 @@ def modify_item(inventory):
     print("Leave blank to keep existing value")
 
     new_qty = input(f"Quantity ({item['quantity']}): ")
+    while new_qty and int(new_qty) < 0:
+        print("\nQuantity cannot be negative!")
+        new_qty = input(f"Quantity ({item['quantity']}): ")	
     new_expiry = input(f"Expiry days ({item.get('expiry_days', 'N/A')}): ")
     new_history = input(f"Usage history ({item.get('usage_history', [])}): ")
 
@@ -45,7 +48,7 @@ def modify_item(inventory):
 
     if new_history:
         item["usage_history"] = [
-            float(x.strip()) for x in new_history.split(",") if x.strip()
+            int(x.strip()) for x in new_history.split(",") if x.strip()
         ]
 
     print("Item updated!")
