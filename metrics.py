@@ -17,6 +17,9 @@ def waste_quantity(item):
 
     return 0
 
+def total_waste(inventory):
+    return sum(waste_quantity(item) for item in inventory)
+
 def waste_risk_score(item):
     waste = waste_quantity(item)
     qty = item["quantity"]
@@ -55,9 +58,6 @@ def explain_waste(item):
         f"{waste:.2f} units may be wasted because "
         f"consumption rate is lower than stock before expiry."
     )
-
-def total_waste(inventory):
-    return sum(waste_quantity(item) for item in inventory)
 
 def optimal_quantity(item):
     """Calculate the ideal quantity to have in inventory"""

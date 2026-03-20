@@ -11,7 +11,7 @@ def suggest_ai(item_name):
         raise Exception("AI unavailable")
 
     prompt = f"""
-    Suggest eco-friendly alternatives for: {item_name}
+    Suggest eco-friendly alternatives for: {item_name}, so that there is no waste.
     Keep it practical and short. Dont use * in your response.
     """
 

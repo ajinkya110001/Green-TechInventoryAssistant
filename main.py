@@ -81,7 +81,8 @@ def main():
             name = input("Please provide the item name for which you want suggestions: ")
             try:
                 print("AI:", suggest_ai(name))
-            except:
+            except Exception as e:
+                print(f"Error occurred: {e}")
                 print("Fallback:", suggest_fallback(name))
 
         elif c == "8":

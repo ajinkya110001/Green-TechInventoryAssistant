@@ -28,7 +28,7 @@ def modify_item(inventory):
     for i, item in enumerate(inventory):
         print(f"{i+1}. {item['name']}")
 
-    idx = int(input("Select item to modify: ")) - 1
+    idx = int(input("Select item number to modify: ")) - 1
     item = inventory[idx]
 
     print("Leave blank to keep existing value")
