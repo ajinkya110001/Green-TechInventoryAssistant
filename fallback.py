@@ -34,12 +34,12 @@ def predict_bulk_depletion_fallback(inventory):
     for item in inventory:
         waste = waste_quantity(item)
         if waste == 0:
-            depleted_before_expiry.append(item['name'])
+            depleted_before_expiry.append(item)
 
     if not depleted_before_expiry:
         return "No items deplete before expiry - all items have waste risk!!"
 
-    return ", ".join(depleted_before_expiry)
+    return depleted_before_expiry
 
 
 def suggest_sustainable(item_name):

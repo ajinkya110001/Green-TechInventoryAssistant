@@ -31,8 +31,14 @@ def main():
             except Exception as e:
                 print(f"Error in bulk analysis: {e}")
                 print("\nGOING FOR FALLBACK ...\n")
-                print(predict_bulk_depletion_fallback(inventory))
-            
+                print("\n ITEMS AT RISK OF DEPLETING BEFORE EXPIRY (FALLBACK):\n")
+                res=predict_bulk_depletion_fallback(inventory)
+                names = [item["name"] for item in res]
+                print(", ".join(names) if isinstance(names, list) else names)
+                for item in res:
+                    if item["name"] in names:
+                        print(f"\nPlease restock {restock_suggestion(item)} units of {item['name']} to meet demand until expiry.\n")
+
         elif c == "2":
             add_item(inventory)
         
