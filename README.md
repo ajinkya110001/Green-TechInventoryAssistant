@@ -34,14 +34,26 @@ USE_AI=true
 python main.py
 ```
 
-Then select data format:
+Load the data from JSON. 
+
+We can also select data format:
 - Option 1: Load from JSON
 - Option 2: Load from CSV
+
+But for now we are sticking to JSON, the data operations are done in CSV as well!
 
 ### Dashboard:
 ```bash
 # View items with bulk depletion analysis
 1 -> View Item(s)
+
+2 -> Add Item
+
+3 -> Modify Item
+
+4 -> Delete Item
+
+5 -> Add Usage Entry
 
 # Make predictions for specific item
 6 -> Predict depletion/wastage (asks for item name, validates, provides prediction with fallback)
@@ -75,26 +87,23 @@ Yes. Used Claude AI and Google Gemini API for:
 
 ## Tradeoffs & Prioritization:
 
-### What did you cut?
+### Known Limitations:
 -  Database persistence (kept CSV/JSON instead for simplicity)
 -  Real-time notifications (would require daemon/scheduler)
--  Multi-user support (single-user CLI focused)
--  Advanced visualization (kept text-based output and input)
--  ML-based demand forecasting (used simple average for MVP)
--  Expiry logic is still redundant, same items can have different expiries
+-  Advanced visualization (kept text-based output and input no visual I/O)
+-  Expiry logic is still redundant, same items can have different days to expiry
+-  No bulk order tracking
+-  Average base predictions for daily usage
+-  Used Gemini-2.5-flash, and no other model
 
 ### What would be build next?
 1. **Demand forecasting** - Use historical trends to predict future usage patterns
 2. **Supplier integration** - Connect to real supplier APIs for live pricing
 3. **Waste reduction alerts** - Proactive notifications before waste happens
 4. **Bulk order handling** - Dedicated logic to adjust calculations after bulk purchases
-5. **Robust Expiry logic** - 
+5. **Robust Expiry logic** - Add expiry date insted of days to expiry for the item
+6. **ML Base forecasting** - Use actual ML models to predict the future dailyuse
 
-### Known Limitations:
-1. **No bulk order tracking** - System doesn't distinguish between normal orders and bulk orders; users must manually adjust quantities
-2. **Average-based predictions** - Uses simple average of usage history; doesn't detect trends or seasonality
-3. **Limited error handling** - Bare exception catches in some places
-4. **Hardcoded model** - Uses gemini-2.5-flash; no configuration for other models
 
 ## Architecture Overview:
 
@@ -115,3 +124,6 @@ Yes. Used Claude AI and Google Gemini API for:
 - **Restock recommendations** based on optimal quantity
 - **Fallback mechanisms** when AI unavailable
 - **Data persistence** in JSON/CSV formats
+
+### Video Link for the detailed overview:
+
