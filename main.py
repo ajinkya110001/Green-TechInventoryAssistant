@@ -1,5 +1,5 @@
 from data_loader import load_json, load_csv, save_csv, save_json
-from data_operations import add_item, modify_item, add_usage_entry
+from data_operations import add_item, modify_item, add_usage_entry, delete_item
 from predictor import predict_ai, predict_fallback, predict_bulk_depletion, analyze_waste_report_ai
 from sustainability import suggest_ai, suggest_fallback
 from metrics import waste_quantity, waste_risk_score, sustainability_score, explain_waste, risk_label, restock_suggestion
@@ -14,7 +14,7 @@ def main():
         inventory = load_json("data/inventory.json")
 
     while True:
-        print("\n1. View Item(s)\n2. Add Item\n3. Modify Item\n4. Add Usage Entry\n5. Predict depletion/wastage\n6. Suggest other options\n7. Waste Report\n8. Save & Commit Changes\n9. Exit")
+        print("\n1. View Item(s)\n2. Add Item\n3. Modify Item\n4. Delete Item\n5. Add Usage Entry\n6. Predict depletion/wastage\n7. Suggest other options\n8. Waste Report\n9. Save/Commit Changes & Exit")
         c = input("Choice: ")
 
         if c == "1":
@@ -38,9 +38,12 @@ def main():
             modify_item(inventory)
 
         elif c == "4":
-            add_usage_entry(inventory)
+            delete_item(inventory)
 
         elif c == "5":
+            add_usage_entry(inventory)
+
+        elif c == "6":
             while True:
                 item_name = input("\nWhich item to predict for? (or 'back' to return to menu): ").strip().lower()
 
@@ -72,14 +75,14 @@ def main():
 
                 break
 
-        elif c == "6":
+        elif c == "7":
             name = input("Please provide the item name for which you want suggestions: ")
             try:
                 print("AI:", suggest_ai(name))
             except:
                 print("Fallback:", suggest_fallback(name))
 
-        elif c == "7":
+        elif c == "8":
             # First, show basic waste metrics
             waste_data = []
             for item in inventory:
@@ -113,13 +116,11 @@ def main():
             except Exception as e:
                 print(f"AI analysis unavailable: {e}")
                 print("\n(Showing basic metrics only - upgrade to enable AI insights)\n")
-        elif c == "8":
+        else:
             save_csv(inventory)
             save_json(inventory)
             print("\nChanges saved!\n")
-
-        else:
-            break
+            print("Exiting...\n")
 
 if __name__ == "__main__":
     main()

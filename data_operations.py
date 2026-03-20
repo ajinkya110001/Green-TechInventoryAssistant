@@ -75,3 +75,28 @@ def add_usage_entry(inventory):
     save_csv(inventory)
     save_json(inventory)
     print("\nChanges saved!\n")
+
+def delete_item(inventory):
+    """Delete an item from inventory with confirmation"""
+    name = input("Enter item name to delete: ").strip()
+
+    # Search for item
+    found = False
+    for i, item in enumerate(inventory):
+        if item["name"].lower() == name.lower():
+            # Confirm deletion
+            confirm = input(f"Are you sure you want to delete '{item['name']}'? (yes/no): ").strip().lower()
+            if confirm == "yes":
+                inventory.pop(i)
+                print(f"\n✓ '{item['name']}' deleted successfully.\n")
+                save_csv(inventory)
+                save_json(inventory)
+                print("Changes saved!\n")
+                found = True
+            else:
+                print("\nDeletion cancelled.\n")
+                found = True
+            break
+
+    if not found:
+        print(f"\n✗ Item '{name}' not found in inventory.\n")
