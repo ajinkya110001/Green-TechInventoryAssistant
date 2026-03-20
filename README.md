@@ -44,15 +44,19 @@ But for now we are sticking to JSON, the data operations are done in CSV as well
 
 ### Dashboard:
 ```bash
-# View items with bulk depletion analysis
+# View items with depletion analysis
 1 -> View Item(s)
 
+# Add Item to the database
 2 -> Add Item
 
+# Modify Item in the database
 3 -> Modify Item
 
+# Delete Item from the database
 4 -> Delete Item
 
+# Add Usage for the day
 5 -> Add Usage Entry
 
 # Make predictions for specific item
@@ -125,5 +129,5 @@ Yes. Used Claude AI and Google Gemini API for:
 - **Fallback mechanisms** when AI unavailable
 - **Data persistence** in JSON/CSV formats
 
-### Video Link for the detailed overview:
+## Video Link for the detailed overview:
 
