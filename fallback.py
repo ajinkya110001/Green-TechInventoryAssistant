@@ -37,7 +37,7 @@ def predict_bulk_depletion_fallback(inventory):
             depleted_before_expiry.append(item['name'])
 
     if not depleted_before_expiry:
-        return "No items deplete before expiry - all items have waste risk"
+        return "No items deplete before expiry - all items have waste risk!!"
 
     return ", ".join(depleted_before_expiry)
 
