@@ -124,6 +124,7 @@ def main():
             save_json(inventory)
             print("\nChanges saved!\n")
             print("Exiting...\n")
+            break
 
 if __name__ == "__main__":
     main()
