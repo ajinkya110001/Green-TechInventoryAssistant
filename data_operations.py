@@ -88,7 +88,7 @@ def delete_item(inventory):
             confirm = input(f"Are you sure you want to delete '{item['name']}'? (yes/no): ").strip().lower()
             if confirm == "yes":
                 inventory.pop(i)
-                print(f"\n✓ '{item['name']}' deleted successfully.\n")
+                print(f"\n '{item['name']}' deleted successfully.\n")
                 save_csv(inventory)
                 save_json(inventory)
                 print("Changes saved!\n")
@@ -99,4 +99,4 @@ def delete_item(inventory):
             break
 
     if not found:
-        print(f"\n✗ Item '{name}' not found in inventory.\n")
+        print(f"\n Item '{name}' not found in inventory.\n")

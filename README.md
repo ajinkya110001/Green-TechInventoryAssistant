@@ -38,33 +38,24 @@ Then select data format:
 - Option 1: Load from JSON
 - Option 2: Load from CSV
 
-### Run Commands:
+### Dashboard:
 ```bash
 # View items with bulk depletion analysis
-1 → View Item(s)
+1 -> View Item(s)
 
 # Make predictions for specific item
-5 → Predict depletion/wastage (asks for item name, validates, provides prediction with fallback)
+6 -> Predict depletion/wastage (asks for item name, validates, provides prediction with fallback)
 
 # Get eco-friendly suggestions
-6 → Suggest other options
+7 -> Suggest other options
 
 # View waste report with AI insights
-7 → Waste Report (shows metrics + AI-enhanced recommendations)
+8 -> Waste Report (shows metrics + AI-enhanced recommendations)
 
 # Save changes
-8 → Save & Commit Changes
+9 -> Save/Commit Changes & Exit
 ```
 
-### Test Commands:
-```bash
-# Test with sample data
-python main.py
-# Load existing data or create test items:
-# - Add items with quantity and daily_usage
-# - Add usage entries to build history
-# - Run predictions/waste report to see AI analysis
-```
 
 ## AI Disclosure:
 
@@ -117,10 +108,10 @@ Yes. Used Claude AI and Google Gemini API for:
 - **fallback.py** - Non-AI calculations for when API unavailable
 
 ### Key Features:
- **View inventory** with bulk depletion analysis
- **Predict depletion** with AI or fallback
- **Waste Report** with AI-enhanced recommendations
- **Sustainability suggestions** for eco-friendly alternatives
- **Restock recommendations** based on optimal quantity
- **Fallback mechanisms** when AI unavailable
- **Data persistence** in JSON/CSV formats
+- **View inventory** with bulk depletion analysis
+- **Predict depletion** with AI or fallback
+- **Waste Report** with AI-enhanced recommendations
+- **Sustainability suggestions** for eco-friendly alternatives
+- **Restock recommendations** based on optimal quantity
+- **Fallback mechanisms** when AI unavailable
+- **Data persistence** in JSON/CSV formats

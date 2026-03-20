@@ -6,12 +6,14 @@ from metrics import waste_quantity, waste_risk_score, sustainability_score, expl
 from fallback import predict_bulk_depletion_fallback
 
 def main():
-    choice = input("Load (1) JSON or (2) CSV? ")
+    # choice = input("Load (1) JSON or (2) CSV? ")
+    print("Loading inventory data from JSON...\n\n")
 
-    if choice == "2":
-        inventory = load_csv("data/inventory.csv")
-    else:
-        inventory = load_json("data/inventory.json")
+#####loading json only for now, can change to csv also if needed, as data opreations would be donr in csv as well#####
+    # if choice == "2":
+    #     inventory = load_csv("data/inventory.csv")
+    # else:
+    inventory = load_json("data/inventory.json")
 
     while True:
         print("\n1. View Item(s)\n2. Add Item\n3. Modify Item\n4. Delete Item\n5. Add Usage Entry\n6. Predict depletion/wastage\n7. Suggest other options\n8. Waste Report\n9. Save/Commit Changes & Exit")
