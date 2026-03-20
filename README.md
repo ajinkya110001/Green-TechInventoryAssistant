@@ -125,3 +125,8 @@ Yes. Used Claude AI and Google Gemini API for:
 
 ## Video Link for the detailed overview:
 
+https://vimeo.com/1175392403?share=copy&fl=sv&fe=ci
+
+The video covers the overall workflow of my Logic, tho I couldnt go through all the test cases while recoring, due to the time contraints (as given in the instructions). Things not covered in the Video are also implemeted in te code!
+
+Thanks for the Review!
