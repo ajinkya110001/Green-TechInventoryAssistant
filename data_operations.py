@@ -27,8 +27,12 @@ def add_item(inventory):
 def modify_item(inventory):
     for i, item in enumerate(inventory):
         print(f"{i+1}. {item['name']}")
+    try:
+        idx = int(input("Select item number to modify: ")) - 1
+    except ValueError:
+        print("Invalid input. Please enter a valid item number.")
+        return
 
-    idx = int(input("Select item number to modify: ")) - 1
     item = inventory[idx]
 
     print("Leave blank to keep existing value")
@@ -60,7 +64,11 @@ def add_usage_entry(inventory):
     for i, item in enumerate(inventory):
         print(f"{i+1}. {item['name']}")
 
-    idx = int(input("Select item number: ")) - 1
+    try:
+        idx = int(input("Select item number to modify: ")) - 1
+    except ValueError:
+        print("Invalid input. Please enter a valid item number.")
+        return
     item = inventory[idx]
 
     usage = int(input("Enter today's usage: "))
