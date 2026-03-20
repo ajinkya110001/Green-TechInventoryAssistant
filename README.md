@@ -82,12 +82,6 @@ Yes. Used Claude AI and Google Gemini API for:
 - API integration logic
 - Error handling strategies
 
-### How did you verify it?
-1. **Manual testing** - Tested each feature end-to-end with sample data
-2. **Code review** - Verified all AI suggestions made logical sense
-3. **Fallback testing** - Simulated API failures to test fallback mechanisms
-4. **Logic validation** - Cross-checked calculations against manual math
-5. **Edge cases** - Tested with empty inventory, zero usage, missing fields
 
 ## Tradeoffs & Prioritization:
 
